@@ -34,6 +34,7 @@ function killAll(){
 }
  
 function factDisplay(fact) {
+console.log(fact);
     const newFactDiv = document.createElement('div');
     newFactDiv.id = "newFact"
     newFactDiv.className = "factElement"
@@ -45,39 +46,41 @@ function factDisplay(fact) {
     newFactDiv.appendChild(factP);
    
     const like = document.createElement('p');
-    let currentLikes = fact.likes;
+    let currentLikes = parseInt(fact.likes);
+    console.log(currentLikes);
     like.className = "factElement";
     like.classList.add('rating-button');
-    like.textContent = "👍"+ fact.likes;
+    like.textContent = "👍"+ currentLikes;
     like.addEventListener('click', () =>{
     ++currentLikes;
-
+console.log(currentLikes);
      fetch(`http://localhost:3000/facts/${factDiv.currentFactId}`,
      {method: 'PATCH',
      headers: {
         "Content-Type": "application/json",
-                Accept: "application/json"
+                Accept: "application/json",
      },
-     body: JSON.stringify({likes: fact[factDiv.currentFactId].likes})
+     body: JSON.stringify(currentLikes)
 
      })});
+
     newFactDiv.appendChild(like);
    
-    let currentDislikes = fact.dislikes;
+    let currentDislikes = parseInt(fact.dislikes);
     const disLike = document.createElement('p');
     disLike.className = "factElement";
     disLike.classList.add('rating-button');
-    disLike.textContent = "👎" + fact.dislikes;
+    disLike.textContent = "👎" + currentDislikes;
     disLike.addEventListener('click', () => {
     ++currentDislikes;
-
+console.log(currentDislikes);
     fetch(`http://localhost:3000/facts/${factDiv.currentFactId}`, {
     method: 'PATCH',
     headers: {
        "Content-Type": "application/json",
-        Accept: "application/json"
+        Accept: "application/json",
     },
-    body: JSON.stringify({dislikes: fact[factDiv.currentFactId].dislikes})
+    body: JSON.stringify(currentDislikes)
     })
 });
 
