@@ -1,0 +1,95 @@
+{
+  "facts": [
+    {
+      "id": 0,
+      "text": "test",
+      "likes": 0,
+      "dislikes": 0,
+      "comments": []
+    },
+    {
+      "text": "Pinocchio is Italian for \"pine head.\"",
+      "likes": 0,
+      "dislikes": 0,
+      "comments": [],
+      "id": 1
+    },
+    {
+      "text": "When possums are playing `possum`, they are not \"playing.\" They actually pass out from sheer terror.",
+      "likes": 0,
+      "dislikes": 0,
+      "comments": [],
+      "id": 2
+    },
+    {
+      "text": "John Lennon`s first girlfriend was named Thelma Pickles.",
+      "likes": 0,
+      "dislikes": 0,
+      "comments": [],
+      "id": 3
+    },
+    {
+      "text": "spumingus",
+      "likes": 0,
+      "dislikes": 0,
+      "comments": [],
+      "id": 4
+    },
+    {
+      "text": "Each king in a deck of playing cards represents a great king from history. Spades - King David, Clubs - Alexander the Great, Hearts - Charlemagne, and Diamonds - Julius Caesar.",
+      "likes": 0,
+      "dislikes": 0,
+      "comments": [],
+      "id": 5
+    },
+    {
+      "text": "Camels have three eyelids to protect themselves from blowing sand!",
+      "likes": 0,
+      "dislikes": 0,
+      "comments": [],
+      "id": 6
+    },
+    {
+      "text": "The crack of a whip is actually a tiny sonic boom, since the tip breaks the sound barrier.",
+      "likes": 0,
+      "dislikes": 0,
+      "comments": [],
+      "id": 7
+    },
+    {
+      "text": "There are only four words in the English language which end in \"dous\": tremendous, horrendous, stupendous, and  hazardous.",
+      "likes": 0,
+      "dislikes": 0,
+      "comments": [],
+      "id": 8
+    },
+    {
+      "text": "Dentists have recommended that a toothbrush be kept at least 6 feet away from a toilet to avoid airborne particles resulting from the flush.",
+      "likes": 0,
+      "dislikes": 0,
+      "comments": [],
+      "id": 9
+    },
+    {
+      "text": "A `jiffy` is a unit of time for 1/100th of a second.",
+      "likes": 0,
+      "dislikes": 0,
+      "comments": [],
+      "id": 10
+    },
+    {
+      "text": "The word Pennsylvania is misspelled on the Liberty Bell.",
+      "likes": 0,
+      "dislikes": 0,
+      "comments": [],
+      "id": 11
+    },
+    {
+      "text": "PEZ candy even comes in a Coffee flavor.",
+      "likes": 0,
+      "dislikes": 0,
+      "comments": [],
+      "id": 12
+    }
+  ]
+}

@@ -5,19 +5,19 @@ const factDiv = el('factbtn');
 const removerConst = document.getElementsByClassName("factElement");
 el('new-fact-button').addEventListener('click', generateRandomFact);
  
-document.addEventListener('DOMContentLoaded', generateFirstFact)
+// document.addEventListener('DOMContentLoaded', generateFirstFact)
  
-function generateFirstFact(){
-    fetch("https://uselessfacts.jsph.pl/random.json?language=en")
-    .then(response => response.json())
-    .then(fact => {
-        localServerCheck(fact)
-        factDisplay(fact);
-    })
- } 
+// function generateFirstFact(){
+//     fetch("https://uselessfacts.jsph.pl/random.json?language=en")
+//     .then(response => response.json())
+//     .then(fact => {
+//         localServerCheck(fact)
+//         factDisplay(fact);
+//     })
+//  } 
  
 function generateRandomFact(){
-    killAll();
+    //killAll();
 
     fetch("https://uselessfacts.jsph.pl/random.json?language=en")
     .then(response => response.json())
@@ -30,7 +30,9 @@ function generateRandomFact(){
 function killAll(){
     //the purge😈👺
     document.getElementById("newFact").remove();
-
+    // factElements = document.getElementsByClassName("factElement")
+    // for(let i = 0; i < factElements.length; i++){
+    //     factElements[i].remove()
 }
  
 function factDisplay(fact) {
@@ -45,51 +47,35 @@ function factDisplay(fact) {
     newFactDiv.appendChild(factP);
    
     const like = document.createElement('p');
-    let currentLikes = fact.likes;
     like.className = "factElement";
     like.classList.add('rating-button');
-    like.textContent = "👍"+ fact.likes;
-    like.addEventListener('click', () =>{
-    ++currentLikes;
-
-     fetch(`http://localhost:3000/facts/${factDiv.currentFactId}`,
-     {method: 'PATCH',
-     headers: {
-        "Content-Type": "application/json",
-                Accept: "application/json"
-     },
-     body: JSON.stringify({likes: fact[factDiv.currentFactId].likes})
-
-     })});
+    like.textContent = "👍";
+    like.addEventListener('click', () =>
+    like.classList.add('green'));
     newFactDiv.appendChild(like);
    
-    let currentDislikes = fact.dislikes;
     const disLike = document.createElement('p');
     disLike.className = "factElement";
     disLike.classList.add('rating-button');
-    disLike.textContent = "👎" + fact.dislikes;
-    disLike.addEventListener('click', () => {
-    ++currentDislikes;
-
-    fetch(`http://localhost:3000/facts/${factDiv.currentFactId}`, {
-    method: 'PATCH',
-    headers: {
-       "Content-Type": "application/json",
-        Accept: "application/json"
-    },
-    body: JSON.stringify({dislikes: fact[factDiv.currentFactId].dislikes})
-    })
-});
-
-
+    disLike.textContent = "👎";
+    disLike.addEventListener('click', () =>
+    disLike.classList.add('red'));
     newFactDiv.appendChild(disLike);
 
     factDiv.append(newFactDiv);
 }
 
+function updateLikes(){
+    
+}
+
+function updateDislikes(){
+    
+}
+
 function localServerCheck(fact){
-    let factFound = false;
     let currentFact = fact.text;
+    let factFound = false;
 
     fetch("http://localhost:3000/facts")
     .then(response => response.json())
@@ -124,8 +110,8 @@ function localServerCheck(fact){
     })
 }
 
-// let duplicateTestObj = {text: "test"}
-// let primedTestObj = {text: "spumingus"}
+let duplicateTestObj = {text: "test"}
+let primedTestObj = {text: "spumingus"}
 
-// localServerCheck(duplicateTestObj)
-// localServerCheck(primedTestObj)
+localServerCheck(duplicateTestObj)
+localServerCheck(primedTestObj)
