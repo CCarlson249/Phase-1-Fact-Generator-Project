@@ -11,7 +11,6 @@ function generateFirstFact(){
     fetch("https://uselessfacts.jsph.pl/random.json?language=en")
     .then(response => response.json())
     .then(fact => {
-        localServerCheck(fact)
         factDisplay(fact);
     })
  } 
@@ -22,7 +21,7 @@ function generateRandomFact(){
     fetch("https://uselessfacts.jsph.pl/random.json?language=en")
     .then(response => response.json())
     .then(fact => {
-        localServerCheck(fact)
+        
         factDisplay(fact);
     })
 } 
@@ -46,43 +45,32 @@ console.log(fact);
     newFactDiv.appendChild(factP);
    
     const like = document.createElement('p');
-    let currentLikes = parseInt(fact.likes);
+    let currentLikes = 0;
     console.log(currentLikes);
     like.className = "factElement";
     like.classList.add('rating-button');
     like.textContent = "👍"+ currentLikes;
     like.addEventListener('click', () =>{
     ++currentLikes;
-console.log(currentLikes);
-     fetch(`http://localhost:3000/facts/${factDiv.currentFactId}`,
-     {method: 'PATCH',
-     headers: {
-        "Content-Type": "application/json",
-                Accept: "application/json",
-     },
-     body: JSON.stringify(currentLikes)
+    like.textContent = "👍"+ currentLikes;
+});
 
-     })});
+
+    
 
     newFactDiv.appendChild(like);
    
-    let currentDislikes = parseInt(fact.dislikes);
+    let currentDislikes = 0;
     const disLike = document.createElement('p');
     disLike.className = "factElement";
     disLike.classList.add('rating-button');
     disLike.textContent = "👎" + currentDislikes;
     disLike.addEventListener('click', () => {
     ++currentDislikes;
-console.log(currentDislikes);
-    fetch(`http://localhost:3000/facts/${factDiv.currentFactId}`, {
-    method: 'PATCH',
-    headers: {
-       "Content-Type": "application/json",
-        Accept: "application/json",
-    },
-    body: JSON.stringify(currentDislikes)
-    })
-});
+    disLike.textContent = "👎" + currentDislikes;
+    
+    });
+
 
 
     newFactDiv.appendChild(disLike);
@@ -90,45 +78,32 @@ console.log(currentDislikes);
     factDiv.append(newFactDiv);
 }
 
-function localServerCheck(fact){
-    let factFound = false;
-    let currentFact = fact.text;
+const commentForm = document.getElementById("new-comment")
 
-    fetch("http://localhost:3000/facts")
-    .then(response => response.json())
-    .then((data) => {
-        for(item in data){
-            if(data[item].text === currentFact){
-                factFound = true;
-                factDiv.currentFactId = data[item].id
-            }
-        }
-        if(factFound === false){
-            
-            fetch("http://localhost:3000/facts", {
-                method: "POST",
-                headers:
-                {
-                    "Content-Type": "application/json",
-                    Accept: "application/json"
-                },
-                body: JSON.stringify({
-                    "text": currentFact,
-                    "likes": 0,
-                    "dislikes": 0,
-                    "comments": []
-                })
+commentForm.addEventListener("submit", (e) => {
+    e.preventDefault()
+    const newComment = e.target.comment.value;
+    fetch("http://localhost:3000/comments", {
+        method: "POST",
+        headers:
+            {
+                "Content-Type": "application/json",
+                Accept: "application/json"
+            },
+            body: JSON.stringify({
+                "text": newComment
             })
-            .then(response => response.json())
-            .then((data) => {
-                factDiv.currentFactId = data.id
-            })
-        }
     })
+    .then(response => response.json())
+    .then(comment => renderComment(comment))
+    
+})
+
+
+function renderComment (comment) {
+    const addedComment = document.createElement('p');
+    addedComment.textContent = comment.text;
+    const commentTag = document.querySelector('#comment-area');
+    commentTag.appendChild(addedComment);
+    commentForm.value = ""
 }
-
-// let duplicateTestObj = {text: "test"}
-// let primedTestObj = {text: "spumingus"}
-
-// localServerCheck(duplicateTestObj)
-// localServerCheck(primedTestObj)

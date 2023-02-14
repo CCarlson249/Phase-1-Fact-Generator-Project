@@ -11,8 +11,9 @@
   <div id="banner">
     <h1 id="title">[TITLE HERE}</h1>
   </div>
-  <div id="factbtn">
+  <div id="main container">
     <h2 id="did-you-know">DID YOU KNOW?</h2>
+  <div id="factbtn" class="main item">
     <button id="new-fact-button">NEW FACT</button>
   </div>
   <div id="fact-holder">
@@ -20,10 +21,29 @@
     
     
   </div>
-<div id="comment-section">
-  
-<form id="new-fact">
+<div id="comment submit" class="main item">
+ 
+<form id="new-comment"class="comments">
+  <h4 id="comment-bar"class="comments">Add a comment!</h4>
+  <input
+  type = 'text'
+  name ='comment'
+  value=""
+  placeholder="'Enter a comment here..."
+  class="input text"
+  />
+  <br />
+  <input
+  type="submit"
+  submit="submit"
+  value="create comment"
+  class="submit"
+  />
 </form>
+<div id="comments" class="comments">
+<h3 id="comment-area">Comment Section:</h3>
+</div>
+</div>
 </div>
 </body>
 </html>
