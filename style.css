@@ -1,4 +1,4 @@
-#newFact {
+/* #newFact {
     text-align: center;
     border: green solid 1px;
     padding: 1rem;
@@ -12,25 +12,13 @@
     border-radius: 10px;
 }
 
-#title {
-    border: green solid 1px;
-    padding: 1rem;
-    width: 16rem;
-    height: 3rem;
-    /* display: inline-flex; */
-    margin: 1rem 2rem;
-    box-shadow: 3px 4px gray;
-    background: rgb(231, 244, 158);
-    border-radius: 10px;
-}
 
-#did-you-know {
+
+/* #did-you-know {
     border: green solid 1px;
     padding: 1rem;
     width: 16rem;
     height: 3rem;
-    justify-content: center;
-    align-items: center;
     text-align: center;
     margin: 1rem 2rem;
     box-shadow: 3px 4px gray;
@@ -47,6 +35,7 @@
     box-shadow: 3px 4px gray;
     background: radial-gradient( rgb(219, 239, 116), #cff71a);
     border-radius: 10px;    
+    text-align: center;
 }
 
 body{
@@ -61,8 +50,8 @@ body{
 
 #factbtn {
     
-    align-items: center;
-    justify-content: center;
+    align-items: left;
+    justify-content: left;
     text-align: center;
 }
 
@@ -76,14 +65,21 @@ body{
     margin: 1rem 2rem;
     box-shadow: 3px 4px gray;
     background: rgb(231, 244, 158);
-    border-radius: 10px;     
+    border-radius: 10px;
+      
 }
 
 #main-container {
-    display:flex;
-    flex-direction: row;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ height: 100vh;
 }
 
-#factbtn #comment-submit {
-    width: 50%;
+.comments {
+    margin-left: auto;
 }
+
+h2 {
+   
+} */
