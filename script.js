@@ -6,6 +6,8 @@ const removerConst = document.getElementsByClassName("factElement");
 el('new-fact-button').addEventListener('click', generateRandomFact);
  
 document.addEventListener('DOMContentLoaded', generateFirstFact)
+
+document.addEventListener('DOMContentLoaded', renderDatabaseComments)
  
 function generateFirstFact(){
     fetch("https://uselessfacts.jsph.pl/random.json?language=en")
@@ -102,8 +104,32 @@ commentForm.addEventListener("submit", (e) => {
 
 function renderComment (comment) {
     const addedComment = document.createElement('p');
+    addedComment.setAttribute('id', 'indComment');
     addedComment.textContent = comment.text;
     const commentTag = document.querySelector('#comment-area');
     commentTag.appendChild(addedComment);
     commentForm.value = ""
+    const deleteBtn = document.createElement('button');
+    deleteBtn.textContent = "X";
+    deleteBtn.style.display = "none";
+    deleteBtn.addEventListener('click', function(){
+            addedComment.remove();
+        })
+    addedComment.appendChild(deleteBtn);
+    addedComment.addEventListener('mouseover', function(){
+        // addedComment.style.display ="none";
+        deleteBtn.style.display = "block";
+    })
+    addedComment.addEventListener('mouseout', function(){
+        // addedComment.style.display = "block";
+        deleteBtn.style.display ="none";
+    })
+}
+
+function renderDatabaseComments(){
+    fetch("http://localhost:3000/comments")
+    .then(response => response.json())
+    .then((comments) => {
+        comments.forEach(comment => renderComment(comment))
+    })
 }
